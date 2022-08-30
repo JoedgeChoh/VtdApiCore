@@ -1,0 +1,19 @@
+<?xml version="1.0" standalone="no" ?>
+<VTDtest verbose = "true" vtdRoot = "../../../../VTD" logFileName = "/tmp/test.html"
+         hdf5path = "/tmp" csvPath = "/tmp" 
+         picturePath = "/tmp" writeCsv = "true" writeHdf5 = "true">
+    <TEST rdbTrigger = "true" testTime = "1.0" packageIds = "8,9" makePictures = "true" hdf5 = "true">
+        <Setup setupName="GroundTruth" numberOfSharedMem = "4" releaseFlag = "2">
+            <SharedMemory sharedMemoryKey = "0x08130"/>
+            <SharedMemory sharedMemoryKey = "0x08131"/>
+            <SharedMemory sharedMemoryKey = "0x08132"/>
+            <SharedMemory sharedMemoryKey = "0x08133"/>
+            <Project projectName="SampleProject">
+                <ScenarioList>
+                        <Scenario name = "Crossing8Demo.xml"/>
+                        <!--Scenario name = "PassingAnimal.xml"/-->
+                </ScenarioList>
+            </Project>
+        </Setup>
+    </TEST>
+</VTDtest>

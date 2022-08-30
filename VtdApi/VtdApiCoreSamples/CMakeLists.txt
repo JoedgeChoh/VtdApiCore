@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(VtdApiCoreSamples)
+
+add_subdirectory(ExampleScpVtdControl)
+add_subdirectory(ExampleRdbPrint)
+add_subdirectory(ExampleDriveControl)
+add_subdirectory(ExampleDriveControlAdvanced)
+add_subdirectory(ExampleDriverControl)
+add_subdirectory(ExampleDriverControlTorque)
+add_subdirectory(ExampleProxyPackage)
+add_subdirectory(ExampleScpPrint)
+add_subdirectory(ExampleScpBuilder)
+add_subdirectory(ExampleVehicleDynamicsIntegration)
+add_subdirectory(ExampleVehicleDynamicsIntegrationUdp)
+
+
+if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+        add_subdirectory(ExampleVtdRemoteControl)
+        add_subdirectory(ExampleTestAutomation)
+        add_subdirectory(ExampleGroundTruth)
+        add_subdirectory(ExampleLatencyTest)
+        add_subdirectory(ExamplePngHDF5)
+        add_subdirectory(ExampleRDB2HDF5)
+        add_subdirectory(ExampleSharedMemory2Png)
+        add_subdirectory(ExampleSharedMemoryVideoStreamer)
+        add_subdirectory(ExampleVtdEncryption)   
+endif()

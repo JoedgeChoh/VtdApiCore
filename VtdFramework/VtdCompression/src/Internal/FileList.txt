@@ -1,0 +1,4 @@
+FileList.txt
+CompressionLZ4.cpp
+CompressionRLE.cpp
+CompressionZLIB.cpp

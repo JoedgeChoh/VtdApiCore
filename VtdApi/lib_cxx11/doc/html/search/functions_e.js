@@ -1,0 +1,14 @@
+var searchData=
+[
+  ['rad2deg',['rad2deg',['../namespaceVTD.html#ab0770c460b3631fa23b507ecda046be3',1,'VTD']]],
+  ['rdbhandler',['RDBHandler',['../classFramework_1_1RDBHandler.html#a15ba974a8b048275ee05dae668570004',1,'Framework::RDBHandler']]],
+  ['readattribute',['readAttribute',['../classVTD_1_1Internal_1_1XMLConfigReader.html#aa7b335ac43e623db21a3787371506bcf',1,'VTD::Internal::XMLConfigReader::readAttribute(const char *attribute, TiXmlElement *pElem, float &amp;variable)'],['../classVTD_1_1Internal_1_1XMLConfigReader.html#a2fa9a4f0c26ee08843a3e4ffa19797e7',1,'VTD::Internal::XMLConfigReader::readAttribute(const char *attribute, TiXmlElement *pElem, unsigned int &amp;variable)'],['../classVTD_1_1Internal_1_1XMLConfigReader.html#a24129cbc1fe659d473221bff97353842',1,'VTD::Internal::XMLConfigReader::readAttribute(const char *attribute, TiXmlElement *pElem, int &amp;variable)'],['../classVTD_1_1Internal_1_1XMLConfigReader.html#a8eead620585d960842ee93727e9fc659',1,'VTD::Internal::XMLConfigReader::readAttribute(const char *attribute, TiXmlElement *pElem, double &amp;variable)'],['../classVTD_1_1Internal_1_1XMLConfigReader.html#ab1da357c11caab1c6509668bf7023572',1,'VTD::Internal::XMLConfigReader::readAttribute(const char *attribute, TiXmlElement *pElem, bool &amp;variable)'],['../classVTD_1_1Internal_1_1XMLConfigReader.html#a27d77efd9d7c3730e7b600079fa93c28',1,'VTD::Internal::XMLConfigReader::readAttribute(const char *attribute, TiXmlElement *pElem, std::string &amp;str)']]],
+  ['readdata',['readData',['../classVTD_1_1TcpPort.html#afe93d0f1d90ccb9da7019aba7ee0aa0e',1,'VTD::TcpPort::readData(T &amp;buffer, boost::shared_ptr&lt; boost::asio::ip::tcp::socket &gt; &amp;socket, const ConnectionHandle &amp;handle)'],['../classVTD_1_1TcpPort.html#a9585d720f25ef77758a1d4d6ab9b1799',1,'VTD::TcpPort::readData(T &amp;buffer, boost::shared_ptr&lt; boost::asio::ip::tcp::socket &gt; &amp;socket, Callback &amp;callback)']]],
+  ['readdataudp',['readDataUdp',['../classVTD_1_1UdpPort.html#af5294c8c8430978f0de0c0b56c9c2597',1,'VTD::UdpPort']]],
+  ['registereventfunc',['registerEventFunc',['../classVTD_1_1MessageCallback.html#aadc3122ae6eb304d6ada36541261c484',1,'VTD::MessageCallback']]],
+  ['releasebuffer',['releaseBuffer',['../classVTD_1_1SharedMemoryIO.html#a6f7c0a0ce4f3df7a8e45580a1e399b4a',1,'VTD::SharedMemoryIO']]],
+  ['removefile',['removeFile',['../classVTD_1_1Internal_1_1FileSystemIO.html#a8f19aabba8848fcdb4e470ed4310f21a',1,'VTD::Internal::FileSystemIO']]],
+  ['removefolder',['removeFolder',['../classVTD_1_1Internal_1_1FileSystemIO.html#a59b782651414646d1bfc7d815bd5ff88',1,'VTD::Internal::FileSystemIO']]],
+  ['renamefolder',['renameFolder',['../classVTD_1_1Internal_1_1FileSystemIO.html#a75d8656a1fd7437a7663ff8b9a630b55',1,'VTD::Internal::FileSystemIO']]],
+  ['retrieveprimaryid',['retrievePrimaryId',['../classFramework_1_1RDBHandler.html#af1f41edf03e556b1c2d1058942b4b966',1,'Framework::RDBHandler']]]
+];

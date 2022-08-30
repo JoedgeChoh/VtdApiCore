@@ -1,0 +1,54 @@
+cmake_minimum_required(VERSION 3.5)
+
+project(VtdFramework VERSION ${VtdFramework_VERSION} LANGUAGES CXX)
+
+set(TARGET VtdNetwork)
+
+find_package(Boost 1.63 REQUIRED COMPONENTS system thread chrono filesystem regex)
+
+collect_source_files(${TARGET} src)
+collect_source_files(${TARGET} include)
+
+if(VtdFramework_BUILD_SHARED)
+    add_library(${TARGET} SHARED ${${TARGET}_SOURCE_LIST})
+else()
+    add_library(${TARGET} STATIC ${${TARGET}_SOURCE_LIST})
+    set_property(TARGET ${TARGET} PROPERTY POSITION_INDEPENDENT_CODE True)
+endif()
+
+set_target_properties(${TARGET} PROPERTIES
+    VERSION ${PROJECT_VERSION}
+    DEBUG_POSTFIX "-d"
+    CXX_STANDARD "11"
+)
+
+target_include_directories(${TARGET} PUBLIC  
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>  
+    $<INSTALL_INTERFACE:include>
+)
+
+target_compile_options(${TARGET} PRIVATE -Wall $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wextra> -pedantic $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wconversion>)
+
+target_link_libraries(${TARGET} PUBLIC VtdCore VtdToolkit $<$<PLATFORM_ID:Linux>:rt> Boost::system Boost::thread Boost::chrono Boost::regex)
+
+#option(${TARGET}_TEST "" off) #VtdNetwork test will not compile on older compilers
+if(BUILD_TESTING AND VtdFramework_TEST)
+    add_subdirectory(test)
+endif()
+
+set(GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
+
+## Documentation
+set(VtdFramework_FILES "${VtdFramework_FILES} ${${TARGET}_SOURCE_LIST}" PARENT_SCOPE)
+
+## package creation:
+if(VtdFramework_INSTALL)
+    install(TARGETS ${TARGET}
+        EXPORT VtdFramework
+        DESTINATION lib
+    )
+    install(DIRECTORY include/ DESTINATION include 
+        FILES_MATCHING PATTERN "*.h"
+        PATTERN ".svn" EXCLUDE
+    )
+endif()

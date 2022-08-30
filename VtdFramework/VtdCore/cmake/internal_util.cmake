@@ -1,0 +1,2 @@
+message(AUTHOR_WARNING "${CMAKE_CURRENT_LIST_FILE} has been deprecated. Please use ${VtdFramework_ROOT}/cmake/VtdFrameworkMacros.cmake instead.")
+include(${VtdFramework_ROOT}/cmake/VtdFrameworkMacros.cmake)

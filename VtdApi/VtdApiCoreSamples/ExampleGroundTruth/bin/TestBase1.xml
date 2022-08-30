@@ -1,0 +1,40 @@
+<?xml version="1.0" standalone="no" ?>
+<VTDtest verbose = "true" vtdRoot = "../../../VTD" logFileName = "/tmp/test.html"
+         hdf5path = "../build" csvPath = "../build" 
+         picturePath = "../build" writeCsv = "true" writeHdf5 = "true">
+    <TEST rdbTrigger = "false" testTime = "10.0" packageIds = "8,9">
+        <Setup setupName="Standard">
+            <Project projectName="SampleProject">
+                <ScenarioList>
+                        <Scenario name = "Crossing8Demo.xml"/>
+                        <Scenario name = "PassingAnimal.xml"/>
+                </ScenarioList>
+            </Project>
+        </Setup>
+    </TEST>
+    <TEST rdbTrigger = "false">
+        <Setup setupName="Standard.HDR" testTime = "5.0">
+            <Project projectName="SampleProject">
+                <ScenarioList>
+                        <Scenario name = "Crossing8Demo.xml"/>
+                        <Scenario name = "Glare.xml"/>
+                        <Scenario name = "Parking.xml"/>
+                        <Scenario name = "PassingPedestrian.xml"/>
+                        <Scenario name = "TrafficDemo.xml"/>
+                        <Scenario name = "TrafficHighway.xml"/>
+                </ScenarioList>
+            </Project>
+        </Setup>
+    </TEST>
+    <TEST makePictures = "true" rdbTrigger = "false" testTime = "5.0">
+            <Setup setupName="Standard.SHM.Flip" numberOfSharedMem = "1" releaseFlag = "2">
+                <SharedMemory sharedMemoryKey = "0x0811a"/>
+                <Project projectName="SampleProject">
+                    <ScenarioList>
+                            <Scenario name = "Parking.xml"/>
+                            <Scenario name = "Crossing8Demo.xml"/>
+                    </ScenarioList>
+                </Project>
+            </Setup>
+        </TEST>    
+</VTDtest>
