@@ -178,7 +178,7 @@ endfunction()
 # Resolve @@PROJECT_NAME@_VERSION@ -> @MyProject_VERSION@ -> 1.2.3
 ###################################
 function(create_version_header input_file generated_file)
-    get_filename_component(input_file "${input_file}" ABSOLUTE)
+    get_filename_component(input_file "${input_file}" ABSOLUTE) #读取输入路径的文件名
     get_filename_component(generated_file "${generated_file}" ABSOLUTE)
     
     configure_file("${input_file}" "${generated_file}.1" @ONLY)
