@@ -4,6 +4,7 @@ project(VtdFramework VERSION ${VtdFramework_VERSION} LANGUAGES CXX)
 
 set(TARGET VtdHdf5)
 
+include_directories(/usr/include/hdf5/serial)
 if(CMAKE_CXX_COMPILER_ID MATCHES GNU AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.8.1)
     option(VtdFramework_USE_HDF5 "Use HDF5" OFF)
     message("VtdHdf5 requires GCC 4.8.1 or higher.")
@@ -45,7 +46,6 @@ set_target_properties(${TARGET} PROPERTIES
 
 #only supported for cmake 3.8+, TODO: Find which features are required by Hdf5
 #target_compile_features(${TARGET} PUBLIC cxx_std_11)
-
 target_include_directories(${TARGET} PUBLIC  
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>  
     $<INSTALL_INTERFACE:include>
@@ -58,7 +58,8 @@ target_compile_definitions(${TARGET} PUBLIC
 )
 
 target_link_libraries(${TARGET} PRIVATE $<$<PLATFORM_ID:Linux>:rt>)
-target_link_libraries(${TARGET} PUBLIC VtdCore VtdToolkit VtdThreads hdf5::hdf5-static hdf5::hdf5_hl-static)
+# target_link_libraries(${TARGET} PUBLIC VtdCore VtdToolkit VtdThreads hdf5::hdf5-static hdf5::hdf5_hl-static)
+target_link_libraries(${TARGET} PUBLIC VtdCore VtdToolkit VtdThreads ${HDF5_LIBRARIES})
 
 set(GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
 

@@ -19,7 +19,7 @@ message("CMAKE_INSTALL_PREFIX  is overridden by ${CMAKE_INSTALL_PREFIX}")
 set(VtdFramework_ROOT ${CMAKE_CURRENT_LIST_DIR})
 set_default_build_type() # 设置默认cmake_build_type=debug
 find_vires_dependencies_optional()
-setup_defaults()
+setup_defaults()  
 
 include(CTest)
 
@@ -30,18 +30,18 @@ message("VtdFramework_INSTALL is ${VtdFramework_INSTALL}")
 mark_as_advanced(VtdFramework_INSTALL) # 将已知变量标记为高级变量
 
 add_subdirectory(VtdCore)
-# add_subdirectory(VtdMath)
-# add_subdirectory(VtdNetwork)
-# add_subdirectory(VtdToolkit)
-# add_subdirectory(VtdThreads)
-# add_subdirectory(VtdHdf5)
-# add_subdirectory(VtdCompression)  
-# 
-# option(VtdFramework_ENABLE_VtdEncryption "Should the VtdEncryption library be built" ON)
-# if(VtdFramework_ENABLE_VtdEncryption)
-#     add_subdirectory(VtdEncryption)  
-# endif()
-# 
+add_subdirectory(VtdMath)
+add_subdirectory(VtdNetwork)
+add_subdirectory(VtdToolkit)
+add_subdirectory(VtdThreads)
+add_subdirectory(VtdHdf5)
+add_subdirectory(VtdCompression)  
+
+option(VtdFramework_ENABLE_VtdEncryption "Should the VtdEncryption library be built" ON)
+if(VtdFramework_ENABLE_VtdEncryption)
+    add_subdirectory(VtdEncryption)  
+endif()
+
 # ## Documentation
 # set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Documentation")
 # string(REPLACE ";" " " DOXYGEN_INPUT "${VtdFramework_FILES}")

@@ -43,7 +43,8 @@ macro(find_vires_dependencies)
     endif()
 endmacro()
 
-macro(find_vires_dependencies_optional)
+macro(find_vires_dependencies_optional)	
+    message(STATUS "Found ViresDependencies_ROOT is ${ViresDependencies_ROOT}.")
     if(NOT ViresDependencies_ROOT)
         #Look for Vires Dependencies in the typical locations
         set(VIRES_DEPENDENCIES_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/.." ${ARGN})

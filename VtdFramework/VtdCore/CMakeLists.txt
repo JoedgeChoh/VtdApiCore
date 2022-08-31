@@ -49,32 +49,32 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "GNU")  ## 编译器为GCC
 endif()
 ## 向target添加编译选项
 target_compile_options(${TARGET} PRIVATE -Wall $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wextra> -pedantic $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wconversion>)
-# 
-# target_compile_definitions(${TARGET} PUBLIC
-#     $<$<CONFIG:Debug>:VTD_DEBUG>
-#     $<$<PLATFORM_ID:Linux>:VTD_OS_LINUX>
-#     $<$<PLATFORM_ID:Windows>:VTD_OS_WINDOWS>
-# )
-# 
-# target_link_libraries( ${TARGET} PRIVATE
-#     $<$<PLATFORM_ID:Linux>:rt>
-# )
-# 
-# target_link_libraries(${TARGET} PUBLIC TinyXML::Static Boost::chrono Boost::filesystem Boost::thread)
-# 
-# ## Documentation
-# set(VtdFramework_FILES "${VtdFramework_FILES} ${${TARGET}_SOURCE_LIST}" PARENT_SCOPE)
-# 
-# ## Testing:
-# if(BUILD_TESTING AND VtdFramework_TEST)
-#     setup_coverage_for_target(
-#         TARGET ${TARGET}
-#         COVERAGE_EXECUTABLES ${TARGET}_TEST
-#     )
-# 
-#     add_subdirectory(test)
-# endif()
-# 
+
+target_compile_definitions(${TARGET} PUBLIC
+    $<$<CONFIG:Debug>:VTD_DEBUG>
+    $<$<PLATFORM_ID:Linux>:VTD_OS_LINUX>
+    $<$<PLATFORM_ID:Windows>:VTD_OS_WINDOWS>
+)
+
+target_link_libraries( ${TARGET} PRIVATE
+    $<$<PLATFORM_ID:Linux>:rt>
+)
+
+target_link_libraries(${TARGET} PUBLIC TinyXML::Static Boost::chrono Boost::filesystem Boost::thread)
+
+## Documentation
+set(VtdFramework_FILES "${VtdFramework_FILES} ${${TARGET}_SOURCE_LIST}" PARENT_SCOPE)
+
+## Testing:
+if(BUILD_TESTING AND VtdFramework_TEST)
+    setup_coverage_for_target(
+        TARGET ${TARGET}
+        COVERAGE_EXECUTABLES ${TARGET}_TEST
+    )
+
+    add_subdirectory(test)
+endif()
+
 ## package creation:
 if(VtdFramework_INSTALL)
     install(TARGETS ${TARGET}
