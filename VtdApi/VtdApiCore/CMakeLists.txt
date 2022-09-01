@@ -42,9 +42,10 @@ target_link_libraries(${TARGET} PUBLIC
 )
 
 ## Documentation
+set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Documentation")
 string(REPLACE ";" " " DOXYGEN_INPUT "${${TARGET}_SOURCE_LIST};${${TARGET}_VERSION_HEADER}")
 set(DOXYGEN_EXCLUDE "${CMAKE_CURRENT_LIST_DIR}/inc/sigslot/sigslot.h")
-set(DOXYGEN_IMAGE_PATHS ${CMAKE_CURRENT_LIST_DIR}/doc/images)
+set(DOXYGEN_IMAGE_PATHS ${CMAKE_CURRENT_LIST_DIR}/Documentation/images)
 add_doxygen_target(${TARGET} "${VtdFramework_ROOT}/cmake/Doxyfile.in" ${GENERATED_DIR}/${TARGET}Doxyfile)
 
 ## package creation:
@@ -54,7 +55,8 @@ install(TARGETS ${TARGET}
     ARCHIVE DESTINATION lib 
     LIBRARY DESTINATION lib
 )
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html/ DESTINATION doc OPTIONAL)
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Documentation/html DESTINATION doc/${PROJECT_NAME} OPTIONAL)
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Documentation/images DESTINATION doc/${PROJECT_NAME} OPTIONAL)
 install(DIRECTORY inc/ DESTINATION include
     FILES_MATCHING PATTERN "*.h"
 )

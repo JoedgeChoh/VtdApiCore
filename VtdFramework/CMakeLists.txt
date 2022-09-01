@@ -77,7 +77,7 @@ if(VtdFramework_INSTALL)
     configure_file("cmake/Config.cmake.in" "${CMAKE_CURRENT_LIST_DIR}/cmake/VtdFrameworkConfig.cmake" @ONLY)
 
     # Install documentation (optional)
-    install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Documentation/html DESTINATION doc OPTIONAL
+    install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Documentation/html DESTINATION doc/${PROJECT_NAME} OPTIONAL
             PATTERN ".svn" EXCLUDE)
     
     install(EXPORT VtdFramework FILE VtdFrameworkTargets.cmake DESTINATION "cmake")
