@@ -42,61 +42,71 @@ if(VtdFramework_ENABLE_VtdEncryption)
     add_subdirectory(VtdEncryption)  
 endif()
 
-# ## Documentation
-# set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Documentation")
-# string(REPLACE ";" " " DOXYGEN_INPUT "${VtdFramework_FILES}")
-# add_doxygen_target(VtdFramework "${VtdFramework_ROOT}/cmake/Doxyfile.in" ${DOXYGEN_OUTPUT_DIRECTORY}/VtdFrameworkDoxyfile)
-# 
-# 
-# ## Deployment
-# 
-# if(VtdFramework_INSTALL)
-#     include(CMakePackageConfigHelpers)
-# 
-#     set(EXPORT_NAME VtdFramework)
-# 
-#     export(EXPORT ${EXPORT_NAME} FILE "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkTargets.cmake")
-#     write_basic_package_version_file(
-#         "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkConfigVersion.cmake" COMPATIBILITY SameMajorVersion
-#     )
-#     configure_package_config_file(
-#         "cmake/Config.cmake.in"
-#         "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkConfig.cmake"
-#         INSTALL_DESTINATION "cmake"
-#     )
-#     configure_file("cmake/Config.cmake.in" "${CMAKE_CURRENT_LIST_DIR}/cmake/VtdFrameworkConfig.cmake" @ONLY)
-# 
-#     # Install documentation (optional)
-#     install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Documentation/html DESTINATION doc OPTIONAL
-#             PATTERN ".svn" EXCLUDE)
-#     
-#     install(EXPORT VtdFramework FILE VtdFrameworkTargets.cmake DESTINATION "cmake")
-#     install(FILES 
-#         "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkMacros.cmake"
-#         "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkConfig.cmake" 
-#         "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkConfigVersion.cmake" 
-#     DESTINATION "cmake")
-# 
-# 
-#     include(${CMAKE_CURRENT_LIST_DIR}/cmake/CPackConfig.cmake)
-#     include(CPack)
-# 
-# #BEGIN: legacy, should be removed after all plugins use their own version headers, doxyfiles, etc.!
-#     configure_file("cmake/VtdFrameworkMacros.cmake" "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkMacros.cmake" COPYONLY)
-#     configure_file("cmake/Version.h.in" "${CMAKE_CURRENT_BINARY_DIR}/cmake/Version.h.in" COPYONLY)
-#     configure_file("cmake/Doxyfile.in" "${CMAKE_CURRENT_BINARY_DIR}/cmake/Doxyfile.in" COPYONLY)
-#     configure_file("cmake/Config.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/cmake/Config.cmake.in" COPYONLY)
-# #END legacy
-# 
-# endif()
-# 
-# ## Testing:
-# if(BUILD_TESTING AND VtdFramework_TEST)
-#     setup_coverage_for_target(
-#         TARGET ${TARGET}
-#         COVERAGE_EXECUTABLES ${TARGET}_TEST
-#     )
-# 
-#     enable_testing()
-#     add_subdirectory(test)
-# endif()
+## Documentation
+set(DOXYGEN_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/Documentation")
+# 将读取文件信息中的“；”替换为空格作为doxygen模块的输入
+string(REPLACE ";" " " DOXYGEN_INPUT "${VtdFramework_FILES}")
+message("DOXYGEN_EXCLUDE is ${DOXYGEN_EXCLUDE}")
+message("DOXYGEN_IMAGE_PATHS is ${DOXYGEN_IMAGE_PATHS}")
+message("HTML_EXTRA_STYLESHEET is ${HTML_EXTRA_STYLESHEET}")
+message("HTML_EXTRA_FILES is ${HTML_EXTRA_FILES}")
+message("HTML_EXTRA_STYLESHEET is ${HTML_EXTRA_STYLESHEET}")
+message("DOXYGEN_OUTPUT_DIRECTORY is ${DOXYGEN_OUTPUT_DIRECTORY}")
+
+add_doxygen_target(VtdFramework "${VtdFramework_ROOT}/cmake/Doxyfile.in" ${DOXYGEN_OUTPUT_DIRECTORY}/VtdFrameworkDoxyfile)
+
+## Deployment
+
+if(VtdFramework_INSTALL)
+    include(CMakePackageConfigHelpers)
+
+    set(EXPORT_NAME VtdFramework)
+
+    export(EXPORT ${EXPORT_NAME} FILE "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkTargets.cmake")
+    # 生成包的版本文件
+    write_basic_package_version_file(
+        "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkConfigVersion.cmake" COMPATIBILITY SameMajorVersion
+    )
+    # 生成包的配置文件
+    configure_package_config_file(
+        "cmake/Config.cmake.in"
+        "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkConfig.cmake"
+        INSTALL_DESTINATION "cmake"
+    )
+    message("CMAKE_CURRENT_LIST_DIR is ${CMAKE_CURRENT_LIST_DIR}")
+    configure_file("cmake/Config.cmake.in" "${CMAKE_CURRENT_LIST_DIR}/cmake/VtdFrameworkConfig.cmake" @ONLY)
+
+    # Install documentation (optional)
+    install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/Documentation/html DESTINATION doc OPTIONAL
+            PATTERN ".svn" EXCLUDE)
+    
+    install(EXPORT VtdFramework FILE VtdFrameworkTargets.cmake DESTINATION "cmake")
+    install(FILES 
+        "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkMacros.cmake"
+        "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkConfig.cmake" 
+        "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkConfigVersion.cmake" 
+    DESTINATION "cmake")
+
+
+    include(${CMAKE_CURRENT_LIST_DIR}/cmake/CPackConfig.cmake)
+    include(CPack)
+
+#BEGIN: legacy, should be removed after all plugins use their own version headers, doxyfiles, etc.!
+    configure_file("cmake/VtdFrameworkMacros.cmake" "${CMAKE_CURRENT_BINARY_DIR}/VtdFrameworkMacros.cmake" COPYONLY)
+    configure_file("cmake/Version.h.in" "${CMAKE_CURRENT_BINARY_DIR}/cmake/Version.h.in" COPYONLY)
+    configure_file("cmake/Doxyfile.in" "${CMAKE_CURRENT_BINARY_DIR}/cmake/Doxyfile.in" COPYONLY)
+    configure_file("cmake/Config.cmake.in" "${CMAKE_CURRENT_BINARY_DIR}/cmake/Config.cmake.in" COPYONLY)
+#END legacy
+
+endif()
+
+## Testing:
+if(BUILD_TESTING AND VtdFramework_TEST)
+    setup_coverage_for_target(
+        TARGET ${TARGET}
+        COVERAGE_EXECUTABLES ${TARGET}_TEST
+    )
+
+    enable_testing()
+    add_subdirectory(test)
+endif()

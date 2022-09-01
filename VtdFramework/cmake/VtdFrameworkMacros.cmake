@@ -233,6 +233,7 @@ macro(add_doxygen_target target_name input_doxy_file target_doxy_file)
 
         if(${${target_name}_DOC})
             set(TARGET_GROUP ALL)
+            message("TARGET_GROUP is ${TARGET_GROUP}")
         else()
             unset(TARGET_GROUP)
         endif()
@@ -242,6 +243,8 @@ macro(add_doxygen_target target_name input_doxy_file target_doxy_file)
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating ${target_name} documentation with Doxygen" VERBATIM
         )
+    else(DOXYGEN_FOUND)
+        message("Doxygen need to be installed to generate the doxygen documentation")
     endif(DOXYGEN_FOUND)
 endmacro()
 
