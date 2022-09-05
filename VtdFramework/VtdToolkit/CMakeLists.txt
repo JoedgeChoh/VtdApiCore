@@ -105,6 +105,7 @@ if(VtdFramework_INSTALL)
     )
     install(DIRECTORY include/ DESTINATION include 
         FILES_MATCHING PATTERN "*.h"
+        PATTERN "*.hh"
         PATTERN ".svn" EXCLUDE
     )
 endif()
