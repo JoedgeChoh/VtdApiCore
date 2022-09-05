@@ -45,7 +45,7 @@ endmacro()
     endif()
 
     find_package(Boost 1.63 REQUIRED COMPONENTS system thread chrono filesystem regex)
-    find_package(TinyXML REQUIRED)
+    # find_package(TinyXML REQUIRED)
 
     find_package(JPEG QUIET)
     if(JPEG_FOUND)

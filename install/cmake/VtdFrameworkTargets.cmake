@@ -54,7 +54,7 @@ add_library(VtdCore STATIC IMPORTED)
 set_target_properties(VtdCore PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "_GLIBCXX_USE_CXX11_ABI=\$<BOOL:OFF>;\$<\$<CONFIG:Debug>:VTD_DEBUG>;\$<\$<PLATFORM_ID:Linux>:VTD_OS_LINUX>;\$<\$<PLATFORM_ID:Windows>:VTD_OS_WINDOWS>"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:\$<\$<PLATFORM_ID:Linux>:rt>>;TinyXML::Static;Boost::chrono;Boost::filesystem;Boost::thread"
+  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:\$<\$<PLATFORM_ID:Linux>:rt>>;Boost::chrono;Boost::filesystem;Boost::thread"
 )
 
 # Create imported target VtdMath
