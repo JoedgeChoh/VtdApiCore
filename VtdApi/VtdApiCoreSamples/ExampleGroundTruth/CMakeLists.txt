@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.7)
 
 
-project(ExampleGroundTruth LANGUAGES CXX)
+project(ExampleGroundTruth LANGUAGES CXX C)
+include_directories(/usr/include/hdf5/serial)
 
-
-find_package(VtdApi REQUIRED CONFIG PATHS "${VtdApi_ROOT}" "${CMAKE_CURRENT_SOURCE_DIR}/../../../VtdApi/cmake")
+find_package(VtdApi REQUIRED CONFIG PATHS "${CMAKE_SOURCE_DIR}/../../../Api/cmake"  "${VtdApi_ROOT}" "${CMAKE_CURRENT_SOURCE_DIR}/../../../VtdApi/cmake")
 
 if(NOT VtdFramework_USE_HDF5)
     message("VtdFramework_USE_HDF5 is OFF, cannot build GroundTruthExample. Set the correct directory of HDF5 package.")

@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.5)
 
 project(ExampleDriveControl)
 
-find_package(VtdApi REQUIRED CONFIG PATHS "${VtdApi_ROOT}" "${CMAKE_CURRENT_SOURCE_DIR}/../../../VtdApi/cmake")
+find_package(VtdApi REQUIRED CONFIG PATHS
+  "/home/zhuhe/Public/VtdApiCore/VtdApi/build/install/cmake" "${VtdApi_ROOT}" "${CMAKE_CURRENT_SOURCE_DIR}/../../../VtdApi/cmake")
 
 set( ALL_SOURCES
     main.cpp

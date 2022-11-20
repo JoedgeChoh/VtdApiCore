@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
 project(VtdFramework VERSION ${VtdFramework_VERSION} LANGUAGES CXX)
-
 set(TARGET VtdHdf5)
 
 include_directories(/usr/include/hdf5/serial)
