@@ -59,7 +59,8 @@ target_compile_definitions(${TARGET} PUBLIC
 
 target_link_libraries(${TARGET} PRIVATE $<$<PLATFORM_ID:Linux>:rt>)
 # target_link_libraries(${TARGET} PUBLIC VtdCore VtdToolkit VtdThreads hdf5::hdf5-static hdf5::hdf5_hl-static)
-target_link_libraries(${TARGET} PUBLIC VtdCore VtdToolkit VtdThreads ${HDF5_LIBRARIES})
+target_link_libraries(${TARGET} PUBLIC VtdCore VtdToolkit VtdThreads
+  ${HDF5_LIBRARIES} ${HDF5_HL_LIBRARIES} ${HDF5_CXX_LIBRARIES})
 
 set(GENERATED_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")
 
